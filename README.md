@@ -1,1 +1,78 @@
-# Sorteador_numeros
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sorteador</title>
+    <style>
+        h1 {
+            color: rgba(183, 44, 172, 0.719);
+            font-size: 2.5em;
+            margin-bottom: 20px;
+
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        
+        input{
+            margin: 10px;
+            padding: 10px;
+            width: 40%;
+        }
+        button{
+            margin-top: 10px; 
+            padding: 10px;
+            width: 9%;
+            border-radius: 15px;
+            background-color:rgb(45, 231, 147)
+        }
+    </style>
+       
+</head>
+<body>
+    <div class="container text-center mt-5">
+        <h1>Sorteador de Números</h1>
+        <h2 id="numeroSorteado" class="mt-3"></h2>
+       
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-4">
+                <input type="number" id="min" class="form-control" placeholder="Quantidade de números">
+            </div>
+            <div class="col-md-4">
+                <input type="number" id="max" class="form-control" placeholder="Número máximo">
+            </div>
+        </div>
+       
+        <button class="btn btn-success btn-lg mt-3" onclick="Sorteador_de_Números()">Sortear</button>
+    </div>
+
+    <script>
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * (max + 1));
+        }      
+
+        function Sorteador_de_Números() {
+            let valorQnt = Number(document.getElementById('min').value);
+            let valorMaior = Number(document.getElementById('max').value);
+            let numSorteado = [];
+
+            if (valorQnt <= 0 || valorMaior <= 0) {
+                document.getElementById('numeroSorteado').innerHTML = "Por favor, insira valores válidos.";
+                return;
+            }
+
+            for (let contador = 0; contador < valorQnt; contador++) {
+                let sorteado = getRandomInt(valorMaior);
+                numSorteado.push(sorteado);
+            }
+
+            document.getElementById('numeroSorteado').innerHTML = "Os números sorteados foram: " + numSorteado.join(", ") + ".";
+        }
+    </script>
+</body>
+</html>
+</head>
+
